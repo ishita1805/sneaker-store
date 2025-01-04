@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-heading {
+    background-image: url('./assets/heading.jpg');
+    background-size: 120%;
+    background-clip: text;    
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Maga, sans-serif';
+}
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-stone-50;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-stone-200;
+}
+
+.landing-bg {
+    background-image: url('./assets/landing.jpg');
+    background-size: cover;
+    background-position: center;
+}

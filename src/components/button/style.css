@@ -1,0 +1,11 @@
+.primary {
+    @apply bg-black text-white px-6 py-3;
+}
+
+.secondary {
+    @apply border-solid border-2 border-black px-6 py-3 backdrop-blur-md;
+}
+
+.button-sm {
+ @apply text-sm px-4 py-2;   
+}
