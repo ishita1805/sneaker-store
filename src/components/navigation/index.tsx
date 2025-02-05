@@ -1,48 +1,96 @@
+import './style.css'
 import logo from '../../assets/logo_black.svg'
 import icons from '../../components/icon/icons.json'
 import Icon from '../../components/icon'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router'
+import { DBContext } from '../../context'
+
+interface NavigationType {
+  label: string;
+  subNavigation?: {
+    label: string;
+    link: string;
+  }[];
+  link: string;
+}
+
+const navigationRight: NavigationType[] = [
+  {
+    label: 'Home',
+    link: '/',
+  },
+  {
+    label: 'Shop',
+    link: '/collection',
+    subNavigation: [
+      { label: 'Sneakers', link: '/collection?category=sneakers' },
+      { label: 'Hoodies', link: '/collection?category=hoodies' },
+      { label: 'Denims', link: '/collection?category=denims' },
+    ],
+  },
+  {
+    label: 'Design Your Own',
+    link: '/design-your-own',
+  },
+];
+const navigationLeft = (loggedIn: boolean): NavigationType[] => { return [
+  {
+    label: 'Wishlist',
+    link: '/wishlist',
+  },
+  {
+    label: 'Cart',
+    link: '/cart',
+  },
+  {
+    label: loggedIn ? 'Logout' : 'Login',
+    link: '/login',
+  },
+]};
+
+const NavigationElement = (el: NavigationType) => {
+  const navigate = useNavigate();
+  const { signOut } = useContext(DBContext)
+  return (
+    <div className='navigation-element'>
+      <div className='navigation-el-label' onClick={() => {
+        if (el.label === 'Logout') signOut();
+        else navigate(el.link);
+      }}>{el.label}</div>
+      {el.subNavigation && <div className="navigation-sub">
+        {el.subNavigation?.map((e) => (
+          <div onClick={() => navigate(e.link)}>{e.label}</div>
+        ))} 
+      </div>}
+    </div>
+  )
+}
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { session } = useContext(DBContext)
   const [expanded, setExpanded] = useState<boolean>(false);
+
   return (
-    <div className='z-[9000] sticky top-0 w-full'>
-      <div className='flex lg:hidden w-full'>
-        <div className={`flex relative cursor-pointer font-thin font-maga  ${expanded ? 'bg-white': 'backdrop-blur-sm'} w-full py-4  px-12 flex-row items-center justify-between`}>
-          <Icon onClick={() => setExpanded((e) => !e)} icon={expanded ? icons.close : icons.hamburger} className={'h-8 w-8'} />
-          <div className='h-12'>
-            <img src={logo} className='h-full' />
-          </div>
+    <div className='z-[9999] fixed top-0 w-full shadow-sm cursor-pointer'>
+      <div className='navigation-container'>
+        <Icon onClick={() => setExpanded((e) => !e)} icon={expanded ? icons.close : icons.hamburger} className='navigation-menu' />
+        
+        <div className={expanded ? 'navigation-section': 'navigation-section hide-navigation-section'}>
+          {navigationRight.map((el, i) => (
+              <NavigationElement key={i} {...el} />
+          ))}
         </div>
-       {expanded && <div className='absolute top-20 shadow-md font-thin text-sm bg-white w-full flex flex-col px-12 pb-6 gap-6 cursor-pointer'>
-          <div>Shop</div>
-          <div>Design Yours</div>
-          <div>My Story</div>
-          <div>Wishlist</div>
-          <div>Cart</div>
-          <div className=''>Login</div>
-        </div>}
-      </div>
-      <div className="hidden relative lg:flex flex-row w-full py-4 px-12 gap-12 items-center cursor-pointer font-thin font-maga backdrop-blur-sm">
-          <div>Shop</div>
-          <div className="absolute bottom-0 translate-y-[100%] p-2 w-60  backdrop-blur-lg">
-            <div>Sneakers</div>
-            <div>Hoodies</div>
-            <div>T-shirts</div>
-            <div>Skirts</div>
-            <div>Watches</div>
-          </div>
-          <div>Design Yours</div>
-          <div>My Story</div>
-          <div className='flex flex-1 h-16 items-center justify-center'>
-              <img src={logo} className='mr-20 h-full' />
-          </div>
-          <div>Wishlist</div>
-          <div>Cart</div>
-          <div className=''>Login</div>
+        <div className={expanded ? 'navigation-section': 'navigation-section hide-navigation-section'}>
+          {navigationLeft(!!session).map((el, i) => (
+              <NavigationElement key={i} {...el} />
+          ))}
+        </div>
+        <img src={logo} className='navigation-logo' onClick={() => navigate('/')}/>
       </div>
     </div>
   )
 }
 
-export default Index
+export default Index;

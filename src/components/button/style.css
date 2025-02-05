@@ -1,11 +1,28 @@
+.button {
+    @apply flex cursor-pointer rounded-md flex-row items-center justify-center gap-2
+}
+/* .primary:hover {
+    background: gray border-box;
+    border: solid 2px transparent;
+
+} */
+.primary-light {
+    @apply bg-white text-black px-6 py-3 border-solid border-2 border-white;
+}
+
 .primary {
-    @apply bg-black text-white px-6 py-3;
+    @apply bg-black text-white px-6 py-3 border-solid border-2 border-black;
 }
 
 .secondary {
     @apply border-solid border-2 border-black px-6 py-3 backdrop-blur-md;
 }
 
+.secondary-light {
+    @apply border-solid border-2 border-white px-6 py-3 backdrop-blur-md text-white;
+}
+
 .button-sm {
  @apply text-sm px-4 py-2;   
 }
+

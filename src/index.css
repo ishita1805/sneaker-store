@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .bg-heading {
-    background-image: url('./assets/heading.jpg');
+    background-image: url('./assets/1.jpeg');
     background-size: 120%;
-    background-clip: text;    
+    background-clip: text; 
     -webkit-background-clip: text;
     color: transparent;
     font-family: 'Maga, sans-serif';
@@ -13,7 +13,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-2 h-2 ;
 }
 
 /* Track */
@@ -29,5 +29,11 @@
 .landing-bg {
     background-image: url('./assets/landing.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: 10% 45%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

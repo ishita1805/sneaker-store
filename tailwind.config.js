@@ -9,7 +9,7 @@ export default {
         "maharlika": ["Maharlika"]
       },
       animation: {
-        "bg-text": "animateBg 20s cubic-bezier(.52,0,.47,.99) infinite"
+        "bg-text": "animateBg 20s cubic-bezier(.52,0,.47,.49) infinite"
       },
       keyframes: {
         animateBg: {

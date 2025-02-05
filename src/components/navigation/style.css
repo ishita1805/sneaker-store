@@ -1,0 +1,66 @@
+.navigation-container {
+    @apply relative bg-white/80 px-12 backdrop-blur-lg flex flex-row items-center font-maga font-thin justify-between;
+}
+
+.navigation-section {
+    @apply flex flex-row gap-12 items-center; 
+} 
+
+.navigation-element {
+    @apply  relative flex flex-col;
+}
+
+.navigation-sub {
+    @apply px-4 flex-col py-2 w-64 absolute -left-4 bottom-0 translate-y-[100%] shadow-sm bg-white gap-2 hidden;
+}
+
+.navigation-element:hover .navigation-sub {
+    @apply flex;
+}
+
+.navigation-logo {
+    @apply absolute h-16 w-auto left-[50%] -translate-x-[50%];
+}
+
+.navigation-menu {
+    @apply hidden;
+}
+
+.navigation-el-label {
+    @apply py-6;
+}
+
+@media only screen and (max-width: 1080px) {
+    .navigation-container {
+        @apply relative bg-white/80 px-12 py-4 backdrop-blur-lg flex flex-col items-start font-maga font-thin justify-start gap-4 pb-6;
+    }
+
+    .navigation-el-label {
+        @apply py-2;
+    }
+
+    .navigation-section {
+        @apply  flex flex-col gap-4 items-start w-full; 
+    }
+
+    .navigation-sub {
+        @apply px-8 pb-0 relative flex left-0 bottom-auto translate-y-0 shadow-none bg-transparent gap-4 w-full;
+    }
+  
+    .navigation-element {
+        @apply py-0 relative flex flex-col;
+    }
+
+    .navigation-logo {
+        @apply absolute h-12 top-4 translate-x-0 left-auto right-12;
+    }
+
+    .hide-navigation-section {
+        @apply hidden;
+    }
+
+    .navigation-menu {
+        @apply h-6 w-6 mt-2 flex;
+    }
+}
+  
