@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "GENERATE_SOURCEMAP=false && tsc -b && vite build",
+    "build": "GENERATE_SOURCEMAP=false && tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
