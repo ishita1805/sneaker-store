@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import App from './App.tsx'
 import './index.css'
 import Collection from './pages/Collection.tsx';
@@ -16,7 +16,7 @@ import { ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')!).render(
     <DBProvider>
-        <BrowserRouter basename={"/sneaker-store"}>
+        <Router>
             <ScrollWrapper>
                 <Routes>
                     <Route path="/" element={<App />} />
@@ -31,7 +31,7 @@ createRoot(document.getElementById('root')!).render(
                     </Route>
                 </Routes>
             </ScrollWrapper>
-        </BrowserRouter>
+        </Router>
         <ToastContainer />
     </DBProvider>
 )
