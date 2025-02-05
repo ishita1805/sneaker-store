@@ -16,7 +16,7 @@ import { ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')!).render(
     <DBProvider>
-        <Router basename={"/sneaker-store"}>
+        <Router>
             <ScrollWrapper>
                 <Routes>
                     <Route path="/" element={<App />} />
