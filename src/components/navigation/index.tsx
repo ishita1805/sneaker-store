@@ -59,8 +59,8 @@ const NavigationElement = (el: NavigationType) => {
         else navigate(el.link);
       }}>{el.label}</div>
       {el.subNavigation && <div className="navigation-sub">
-        {el.subNavigation?.map((e) => (
-          <div onClick={() => navigate(e.link)}>{e.label}</div>
+        {el.subNavigation?.map((e, i) => (
+          <div key={`subnav-${i}`} onClick={() => navigate(e.link)}>{e.label}</div>
         ))} 
       </div>}
     </div>
@@ -79,12 +79,12 @@ const Index = () => {
         
         <div className={expanded ? 'navigation-section': 'navigation-section hide-navigation-section'}>
           {navigationRight.map((el, i) => (
-              <NavigationElement key={i} {...el} />
+              <NavigationElement key={`${i}-right`} {...el} />
           ))}
         </div>
         <div className={expanded ? 'navigation-section': 'navigation-section hide-navigation-section'}>
           {navigationLeft(!!session).map((el, i) => (
-              <NavigationElement key={i} {...el} />
+              <NavigationElement key={`${i}-left`} {...el} />
           ))}
         </div>
         <img src={logo} className='navigation-logo' onClick={() => navigate('/')}/>

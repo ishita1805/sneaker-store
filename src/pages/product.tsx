@@ -135,7 +135,7 @@ const Product = () => {
           <div className="flex flex-row gap-4 my-2 cursor-pointer w-full">
             <Button
               onClick={() => {
-                addToCart(product!.id, size, 'fm');
+                addToCart(product!.id, size.id, 'fm');
               }}
               label="Buy Now"
               size="sm"

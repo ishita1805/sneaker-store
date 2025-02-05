@@ -8,7 +8,8 @@ type AccordionItemProps = {
   content: React.ReactNode;
 };
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ title, content, open }) => {
+const AccordionItem: React.FC<AccordionItemProps> = (_props) => {
+  const { title, content, open } = { open: false, ..._props }
   const [isOpen, setIsOpen] = useState(open);
 
   return (
@@ -36,7 +37,7 @@ interface Props {
     open?: boolean;
   }[]
 }
-const Accordion = ({ items }: Props ) => {
+const Accordion = ({ items }: Props) => {
   return (
     <div className="w-full my-4">
       {items.map((item, index) => (
@@ -47,7 +48,3 @@ const Accordion = ({ items }: Props ) => {
 };
 
 export default Accordion;
-
-Accordion.defaultProps = {
-  open: false,
-}

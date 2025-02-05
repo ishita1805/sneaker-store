@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+ import { useContext, useState } from "react"
 import Icon from "./icon"
 import icons from "./icon/icons.json"
 import Button from "./button";
@@ -12,7 +12,12 @@ interface Props extends Product {
     className?: string,
 }
 
-const Index = (el: Props) => {
+const Index = (_el: Props) => {
+    const el = {
+        variant: 'grid',
+        wishlisted: false,
+        ..._el,
+    }
     const navigate = useNavigate();
     const [selected, setSelected] = useState<number>(0);
     const { addToWishlist, removeFromWishlist } = useContext(DBContext)
@@ -82,9 +87,3 @@ const Index = (el: Props) => {
 }
 
 export default Index
-
-
-Index.defaultProps = {
-    variant: 'grid',
-    wishlisted: false,
-}

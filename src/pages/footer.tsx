@@ -74,9 +74,9 @@ const Footer = () => {
 
             <div className='flex flex-row flex-wrap gap-2 lg:gap-24 md:gap-12'>
                 {content.map(({heading, list}) => (
-                    <div className='flex flex-col min-w-[40%] md:min-w-0'>
+                    <div key={heading} className='flex flex-col min-w-[40%] md:min-w-0'>
                         <div className='text-base font-medium font-maharlika mb-4'>{heading}</div>
-                        {list.map((el) => <div onClick={() => el.external ? window.open(el.link, '__blank') : navigate(el.link)} className='text-sm font-thin mb-2 text-neutral-400 cursor-pointer'>{el.text}</div>)}
+                        {list.map((el) => <div key={el.link} onClick={() => el.external ? window.open(el.link, '__blank') : navigate(el.link)} className='text-sm font-thin mb-2 text-neutral-400 cursor-pointer'>{el.text}</div>)}
                     </div>
                 ))}
             </div>

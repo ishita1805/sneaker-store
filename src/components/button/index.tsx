@@ -10,7 +10,11 @@ interface Props {
     size: 'sm' | 'lg';
 }
 
-const index = (props: Props) => {
+const index = (_props: Props) => {
+    const props = {
+      variant: 'primary',
+      ..._props,
+    }
     const { size, label, onClick, icon, variant, className } = props;
   return (
     <div onClick={onClick} className={`button button-${size} ${variant} ${className}`}>
@@ -21,9 +25,3 @@ const index = (props: Props) => {
 }
 
 export default index
-
-index.defaultProps = {
-    variant: 'primary',
-    icon: '',
-    className: '',
-}
