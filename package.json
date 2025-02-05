@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://ishita1805.github.io/sneaker-store/",
   "scripts": {
     "dev": "vite",
     "build": "GENERATE_SOURCEMAP=false && tsc -b && vite build",
