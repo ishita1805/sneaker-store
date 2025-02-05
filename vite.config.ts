@@ -4,11 +4,11 @@ import tailwindcss from 'tailwindcss'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/sneaker-store/',
   plugins: [react()],
   css: {
     postcss: {
       plugins: [tailwindcss()],
     },
   },
-  base: '/sneaker-store/',
 })
