@@ -112,7 +112,10 @@ const DBProvider = ({ children }: { children: React.ReactNode }) => {
     const signIn = async () => {
         try {
           await supabaseClient?.auth.signInWithOAuth({
-            provider: 'google'
+            provider: 'google',
+            options: {
+              redirectTo: import.meta.env.VITE_REDIRECT_URL
+            }
           })
         } catch (e: any) {
           toast(genErrorMessage(e.code, 'auth'), { type: 'error' })
